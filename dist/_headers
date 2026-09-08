@@ -1,0 +1,41 @@
+# ==========================================================
+# Cloudflare Pages — Custom Headers
+# https://developers.cloudflare.com/pages/configuration/headers/
+# ==========================================================
+
+# ---- إعدادات أمان عامة على كل الصفحات ----
+/*
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), interest-cohort=()
+  Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+
+# ---- الأيقونات (sprites) — ثابتة، تكاش لمدة طويلة ----
+/sprites/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# ---- الصور الثابتة ----
+/src/assets/images/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# ---- ملفات الـ CSS و JS المبنية ----
+/*.css
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.js
+  Cache-Control: public, max-age=31536000, immutable
+
+# ---- الخطوط ----
+/*.woff2
+  Cache-Control: public, max-age=31536000, immutable
+
+# ---- صفحة الـ HTML الرئيسية — دايمًا يتأكد من آخر نسخة ----
+/
+  Cache-Control: public, max-age=0, must-revalidate
+
+/index.html
+  Cache-Control: public, max-age=0, must-revalidate
+
+/404.html
+  Cache-Control: public, max-age=0, must-revalidate
